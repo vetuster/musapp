@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOG_PATH" value="./logs" />
+    <property name="LOG_NAME" value="musapp" />
+    
+    <appender name="STDOUT"
+        class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{ISO8601} %-5level %logger{0}->%method - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_PATH}/${LOG_NAME}.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>%d{ISO8601} %-5level %logger{0}->%method - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.trksoft" level="debug" />
+    
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
